@@ -2,8 +2,6 @@ package edu.idel.val.repaso;
 
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 /**
  * Esta es una clase que contiene ejercicios básicos de repaso en JAVA
  * @author formacion
@@ -22,8 +20,28 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 public class MainRepaso {
 	
 	
+	public static int nVecesLetraEnCadena (String cadena, char letra)
+	{
+		int nveces = 0;
+		
+		for (int indice = 0; indice < cadena.length(); indice++)
+		{
+			char letra_actual = cadena.charAt(indice);
+			if (letra_actual==letra)
+			{
+				System.out.println("Encontrada!");
+				nveces++;//nveces = neveces + 1;
+			} else {
+				System.out.println("No coincide");
+			}
+		}
+		
+		return nveces;
+		
+	}
+	
 	/**
-	 * EJERICIO 
+	 * EJERICIO 1
 	 * @param cadena
 	 * @param letra
 	 * @return
@@ -141,7 +159,11 @@ public class MainRepaso {
 	}
 	
 	public static void main(String[] args) {
+		//TEST EJERCICIO 1
 		
+		int nveces = nVecesLetraEnCadena("AURORA", 'A');
+		System.out.println("resultado = " + nveces);
+		//TEST EJERCICIO 2
 		if (perteneceCaracterACadena("Rivas", 'a'))
 		{
 			System.out.println("Pertenece");
