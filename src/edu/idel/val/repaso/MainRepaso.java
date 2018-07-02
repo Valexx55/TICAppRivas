@@ -19,25 +19,58 @@ import java.util.Scanner;
  */
 public class MainRepaso {
 	
+	/**
+	 * EJERCICIO 6
+	 */
+	public static String daLaVuelta (String cad)
+	{
+		String cad_reves = "";
+		
+		for (int indice=cad.length()-1;indice>=0; indice--)
+		{
+			char letra_actual = cad.charAt(indice);
+			cad_reves = cad_reves + letra_actual;
+		}
+		return cad_reves;
+		
+	}
 	
+	
+	
+	/**
+	 * SI QUIERO UN NÚMERO CON OTRO
+	 * UTILIZO ==
+	 * 
+	 * SI QUIERO COMPARAR UN STRING CON OTRO
+	 * UTILZO equals
+	 * 
+	 * palabra1.equals(palabra2);
+	 */
+	
+	
+	/**
+	 * Este método calcula el número de veces que aparece 
+	 * una letra en una palabra
+	 * @param cadena la palabra a revisar
+	 * @param letra la letra para comparar
+	 * @return el número de veces que letra está en palabra
+	 */
 	public static int nVecesLetraEnCadena (String cadena, char letra)
 	{
-		int nveces = 0;
+		int nveces = 0;//para ir contando
 		
-		for (int indice = 0; indice < cadena.length(); indice++)
+		for (int indice = 0; indice < cadena.length(); indice++) //recorro la caden a
 		{
-			char letra_actual = cadena.charAt(indice);
-			if (letra_actual==letra)
+			char letra_actual = cadena.charAt(indice);//obtengo la letra en curso
+			if (letra_actual==letra) //comparo
 			{
-				System.out.println("Encontrada!");
+				System.out.println("Encontrada!");//si son iguales, actualizo
 				nveces++;//nveces = neveces + 1;
-			} else {
+			} else { //si no, informo
 				System.out.println("No coincide");
 			}
 		}
-		
-		return nveces;
-		
+		return nveces; //el número de veces que aparece la letra en la palabra
 	}
 	
 	/**
@@ -159,35 +192,40 @@ public class MainRepaso {
 	}
 	
 	public static void main(String[] args) {
-		//TEST EJERCICIO 1
+		//TEST EJERCICIO 6
 		
-		int nveces = nVecesLetraEnCadena("AURORA", 'A');
-		System.out.println("resultado = " + nveces);
-		//TEST EJERCICIO 2
-		if (perteneceCaracterACadena("Rivas", 'a'))
-		{
-			System.out.println("Pertenece");
-		} else {
-			System.out.println("No pertenece");
-		}
-		//TEST EJERCICIO 3
-		boolean resultado = esNumeroPar(6);
-		System.out.println(resultado);
-		resultado = esNumeroPar(7);
-		System.out.println(resultado);
-		//TEST EJERCICIO 4
-		pedirEdadYDecirSiEsMayor();
-		//TEST EJERICIO 5
-		decirNota(3);
-		decirNota(5);
-		decirNota(6);
-		decirNota(7);
-		decirNota(8);
-		decirNota(9);
-		decirNota(10);
-		decirNota(11);
-		//TEST EJERCICIO 7
-		mostrarSecuenciaDe3();
+		String cad_vuelta = daLaVuelta ("Rivas");
+		System.out.println(cad_vuelta);
+		
+//		//TEST EJERCICIO 1
+//		
+//		int nveces = nVecesLetraEnCadena("AURORA", 'A');
+//		System.out.println("resultado = " + nveces);
+//		//TEST EJERCICIO 2
+//		if (perteneceCaracterACadena("Rivas", 'a'))
+//		{
+//			System.out.println("Pertenece");
+//		} else {
+//			System.out.println("No pertenece");
+//		}
+//		//TEST EJERCICIO 3
+//		boolean resultado = esNumeroPar(6);
+//		System.out.println(resultado);
+//		resultado = esNumeroPar(7);
+//		System.out.println(resultado);
+//		//TEST EJERCICIO 4
+//		pedirEdadYDecirSiEsMayor();
+//		//TEST EJERICIO 5
+//		decirNota(3);
+//		decirNota(5);
+//		decirNota(6);
+//		decirNota(7);
+//		decirNota(8);
+//		decirNota(9);
+//		decirNota(10);
+//		decirNota(11);
+//		//TEST EJERCICIO 7
+//		mostrarSecuenciaDe3();
 	}
 
 }
