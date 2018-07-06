@@ -10,13 +10,31 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 
 public class MainFicheros {
-
+	
+	private static final int CLAVE_CIFRADO = 3;
+	
 	/**
 	 * 
 	 * TODO: HACED UN MÉTODO QUE RX EL NOMBRE DEL FICHERO Y UN ARRAY DE STRINGS Y
 	 * ESCRIBA EL ARRAY DE STRINGS EN ESE FICHERO
 	 */
-
+	public static String descifradoCesar (String mensaje_cifrado, int clave)
+	{
+		String mensaje_original = "";
+		
+			for (int i=0; i<mensaje_cifrado.length();i++)
+			{
+				char letra = mensaje_cifrado.charAt(i);//obtengo caracter
+				int n_letra = (int)letra;//casteo a número
+				n_letra = n_letra-clave;//resto clave / codifico
+				char nueva_letra = (char)n_letra;//casteo a letra
+				mensaje_original = mensaje_original + nueva_letra;//concateno
+			}
+		
+		return mensaje_original;
+	}
+	
+	
 	public static String cifradoCesar (String mensaje, int clave)
 	{
 		String mensaje_cifrado = "";
@@ -94,8 +112,17 @@ public class MainFicheros {
 
 	public static void main(String[] args) {
 		
-		String mcifrado = cifradoCesar("HOLA", 3);
+		String mcifrado = cifradoCesar("HOLA", MainFicheros.CLAVE_CIFRADO);
 		System.out.println(mcifrado);
+		String mensaje_o = descifradoCesar(mcifrado, MainFicheros.CLAVE_CIFRADO);
+		System.out.println(mensaje_o);
+		if (mensaje_o.equals("HOLA"))
+		{
+			System.out.println("Ha ido bien :)");
+		} else 
+		{
+			System.out.println("DesCifrado mal resuleto");
+		}
 		// imprimirOcultos(".");// directorio actual
 		// escribirFicheroXPantalla ("jamon.txt");
 	//	escibirMensajeFichero("salida.txt", "YO K SÉ");

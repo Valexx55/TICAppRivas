@@ -5,6 +5,11 @@ public class Persona {
 	private double peso;
 	private double altura;
 	
+	//CONSTRUCTOR POR DEFECTO new Persona ();
+	public Persona ()
+	{
+		
+	}
 	public Persona(double peso, double altura) {
 		this.peso = peso;
 		this.altura = altura;
