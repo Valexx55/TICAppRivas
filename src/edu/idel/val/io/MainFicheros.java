@@ -1,32 +1,79 @@
 package edu.idel.val.io;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class MainFicheros {
 
 	/**
 	 * 
-	 * TODO: HACED UN MÉTODO QUE RX UN NOMBRE DE UN DIRECTORIO E IMPRIMA SÓLO LOS
-	 * ARCHIVOS OCULTOS
+	 * TODO: HACED UN MÉTODO QUE RX EL NOMBRE DEL FICHERO Y UN ARRAY DE STRINGS Y
+	 * ESCRIBA EL ARRAY DE STRINGS EN ESE FICHERO
 	 */
 
-	public static void escribirFicheroXPantalla(String nombre_fichero) 
+	public static String cifradoCesar (String mensaje, int clave)
 	{
-		try 
-		{
-			FileReader fileReader = new FileReader(nombre_fichero);
-			int letra_leido = 0;
-			char letra;
-			while (letra_leido!=-1)
+		String mensaje_cifrado = "";
+		
+			for (int i=0; i<mensaje.length();i++)
 			{
-				letra_leido = fileReader.read();
-				letra = (char)letra_leido;
-				System.out.println(letra_leido + " = " + letra );
+				char letra = mensaje.charAt(i);//obtengo caracter
+				int n_letra = (int)letra;//casteo a número
+				n_letra = n_letra+clave;//sumo clave / codifico
+				char nueva_letra = (char)n_letra;//casteo a letra
+				mensaje_cifrado = mensaje_cifrado + nueva_letra;//concateno
 			}
-			fileReader.close();//cierro fichero
-			
+		
+		return mensaje_cifrado;
+	}
+	
+	public static void escribeEnFichero(String nombre, String[] array_strings) {
+
+		try {
+			FileWriter fw = new FileWriter(nombre);
+			BufferedWriter bw = new BufferedWriter(fw);
+			for (int i = 0; i < array_strings.length; i++) {
+				bw.write(array_strings[i] + "\n");
+				bw.newLine();
+			}
+			bw.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERROR escrbiendo");
+			e.printStackTrace();
+		}
+	}
+
+	public static void escibirMensajeFichero(String nf, String mensaje) {
+		try {
+			FileWriter fw = new FileWriter(nf);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(mensaje);
+			bw.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERROR escrbiendo");
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void escribirFicheroXPantalla(String nombre_fichero) {
+		try {
+			FileReader fileReader = new FileReader(nombre_fichero);
+			BufferedReader br = new BufferedReader(fileReader);
+			String linea_leida = br.readLine();// leo 1ª línea
+			while (linea_leida != null) {
+				System.out.println(linea_leida);
+				linea_leida = br.readLine();// leo siguientes
+			}
+			br.close();// cierro fichero
 		} catch (Exception e) {
 			System.out.println("Ha habido un error");
 			e.printStackTrace();
@@ -46,9 +93,22 @@ public class MainFicheros {
 	}
 
 	public static void main(String[] args) {
-		//imprimirOcultos(".");// directorio actual
-		escribirFicheroXPantalla ("descanso.txt");
-
+		
+		String mcifrado = cifradoCesar("HOLA", 3);
+		System.out.println(mcifrado);
+		// imprimirOcultos(".");// directorio actual
+		// escribirFicheroXPantalla ("jamon.txt");
+	//	escibirMensajeFichero("salida.txt", "YO K SÉ");
+//		String [] array_string = new String[7];
+//		array_string [0] = "Hola";
+//		array_string [1] = "Hola";
+//		array_string [2] = "Hola";
+//		array_string [3] = "Hola";
+//		array_string [4] = "Hola";
+//		array_string [5] = "Hola";
+//		array_string [6] = "Hola";
+//		
+//		escribeEnFichero("Hola", array_string);
 		/*
 		 * Crear una carpeta en la raíz de nuestro proyecto Java dentro de Eclipse e
 		 * introducir algunos ficheros. Hacer después un programa, para que liste el
