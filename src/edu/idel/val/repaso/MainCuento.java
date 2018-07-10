@@ -62,12 +62,13 @@ public class MainCuento {
 			//4Escribir en ese fichero, el cuento en orden:
 			//start body end
 			escribirCuento (start,body,end, outfile);
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			System.out.println("por aquí pasa tanto");
+			System.out.println("si ha fallado como si no");
+			
 		}
 		
 	
