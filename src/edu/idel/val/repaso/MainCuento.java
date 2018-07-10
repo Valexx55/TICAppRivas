@@ -2,6 +2,7 @@ package edu.idel.val.repaso;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -25,15 +26,31 @@ public class MainCuento {
 		
 	}
 	
-	
-	
+	//var_args ...
+	private static void escribirCuento (String ... params)
+	{
+		try {
+			FileWriter fw = new FileWriter(params[3]);//nombre_fichero de salida
+			fw.write(params[0]+ "\n");//start
+			fw.write(params[1]+ "\n");//body
+			fw.write(params[2]);//end
+			fw.close();//cierro
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error al escribir el cuento");
+			e.printStackTrace();
+		}
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String idioma = "IT";//args[0];//esto puede ser IT, ES o EN
 		System.out.println("IDIOMA = " + idioma);
 		//1 Seleccionar el fichero elegido por el usuario
 		String nombre_fichero = seleccionarNombreFichero(idioma);
-		//2 Leer sus claves (start body y el end) 	
+		//2 Leer sus claves (start body y el end) 
+		//3 Leer la clave "outfile" que contiene el nombre
+		//del fichero de salida
 		Properties properties = new Properties();
 		try {
 			properties.load(new FileReader(nombre_fichero));
@@ -41,7 +58,10 @@ public class MainCuento {
 			String start = properties.getProperty("start");
 			String end = properties.getProperty("end");
 			String outfile = properties.getProperty("outfile");
-			//TODO ESCRIBIR EL FICHERO DE SALIDA FILEWRITER
+			//TODO ESCRIBIR EL FICHERO DE SALA FILEWRITER
+			//4Escribir en ese fichero, el cuento en orden:
+			//start body end
+			escribirCuento (start,body,end, outfile);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,10 +69,8 @@ public class MainCuento {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//3 Leer la clave "outfile" que contiene el nombre
-		//del fichero de salida
-		//4Escribir en ese fichero, el cuento en orden:
-		//start body end
+		
+	
 		
 		
 		
