@@ -2,6 +2,9 @@ package edu.idel.val.model;
 
 public class Persona {
 	
+	
+	
+	
 	private String nombre;
 	private int edad;
 	

@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MainFicheros {
 
@@ -62,6 +63,34 @@ public class MainFicheros {
 			System.out.println("Falló el conteo");
 		}
 		return n_lineas;
+	}
+	
+	
+	public static ArrayList<String> cargarFicheroEnLista(String nf) {
+		ArrayList<String> lineas_fichero = null;
+		FileReader fr = null;// para leer el fichero
+		BufferedReader br = null;// para leer por líneas
+		String linea_leida = null;
+
+		try {// contamos las líneas del fichero
+			//n_lineas = contarLineasFichero(nf);
+			//instanciar el array una vez conocido el tamaño
+			lineas_fichero = new ArrayList<String>(); //new String[n_lineas];
+			//TODO leer el fichero e ir metiendo en el array
+			fr = new FileReader(nf);
+			br = new BufferedReader(fr);
+			while (null!=(linea_leida = br.readLine()))
+			{
+				lineas_fichero.add(linea_leida);
+			}
+			br.close();//cierro
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Hubo un error");
+			e.printStackTrace();
+		}
+
+		return lineas_fichero;
 	}
 
 	/**
@@ -163,12 +192,29 @@ public class MainFicheros {
 
 	public static void main(String[] args) {
 
-		String[] sa = cargarFichero("archivo_pruebas");
-		System.out.println("Cargar Fichero invocado ...");
-		for (String s : sa)
+		ArrayList<String> lista_lineas = cargarFicheroEnLista("archivo_pruebas");
+		
+		for (String linea : lista_lineas)
 		{
-			System.out.println(s);
+			System.out.println(linea);
 		}
+		//for tradicional
+		System.out.println("-----------------");
+		for (int i=0; i<lista_lineas.size(); i++)
+		{
+			System.out.println(lista_lineas.get(i));
+		}
+		
+		System.out.println(" HAy " +lista_lineas.size() + " lineas");
+		
+		
+		
+//		String[] sa = cargarFichero("archivo_pruebas");
+//		System.out.println("Cargar Fichero invocado ...");
+//		for (String s : sa)
+//		{
+//			System.out.println(s);
+//		}
 		
 //		String mcifrado = cifradoCesar("HOLA", MainFicheros.CLAVE_CIFRADO);
 //		System.out.println(mcifrado);
