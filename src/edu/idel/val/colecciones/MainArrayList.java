@@ -79,7 +79,7 @@ public class MainArrayList {
 		lista_perros.add(perro_nacho);
 		lista_perros.add(perro_aran);
 		
-		Perro perro_buscado = new Perro("Galgo", 3, "Isi");
+		Perro perro_buscado = new Perro("Galgo", 2, "Isi");
 		boolean esta = perroEnLista(lista_perros, perro_buscado);
 		if (esta)
 		{

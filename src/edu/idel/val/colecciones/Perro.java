@@ -14,7 +14,9 @@ public class Perro {
 		//y obj es el otro
 		Perro p = (Perro)obj;//hago el casting
 		
-		if (this.nombre.equals(p.nombre))
+		if (this.nombre.equals(p.nombre)
+			&&(this.raza.equals(p.raza))
+			&&(this.edad==p.edad))
 		{
 			son_iguales = true;
 		}
