@@ -20,6 +20,7 @@ public class Perro implements Comparable<Perro>{
 		}
 	}
 	/**
+	 * ORDEN NATURAL
 	 * TODO comparar perro con this
 	 * si this es mayor que perro devuelo nº +
 	 * si this es menor que perro devuelvo nº -
@@ -29,14 +30,9 @@ public class Perro implements Comparable<Perro>{
 	public int compareTo(Perro perro) {
 		int mayor = 0;
 		
-		if (this.edad>perro.edad)
-		{
-			mayor = 1;
-		}
-		else if (this.edad < perro.edad)
-		{
-			mayor = -1;
-		}
+			//mayor = this.edad-perro.edad;
+			mayor = this.nombre.compareTo(perro.nombre);
+		
 		return mayor;
 	}
 	

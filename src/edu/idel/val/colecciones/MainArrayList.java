@@ -158,7 +158,11 @@ public class MainArrayList {
 		System.out.println("LPERROS desORDENADA");
 		Perro.mostrarListaPerros(lista_perros);
 		Collections.sort(lista_perros);
-		System.out.println("LPERROS ORDENADA");
+		System.out.println("LPERROS ORDEN NATURAL");
+		Perro.mostrarListaPerros(lista_perros);
+		ComparadorPerros cp = new ComparadorPerros();
+		Collections.sort(lista_perros, cp);
+		System.out.println("LPERROS ORDEN total");
 		Perro.mostrarListaPerros(lista_perros);
 //		
 //		Perro perro_buscado = new Perro("Galgo", 3, "Isi");
