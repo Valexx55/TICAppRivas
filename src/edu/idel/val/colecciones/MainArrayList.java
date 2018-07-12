@@ -2,10 +2,81 @@ package edu.idel.val.colecciones;
 
 import java.util.ArrayList;
 
+/*
+ * 
+ * PROPUESTA DE EJERCICIO 1
+ * 
+ * En un fichero de texto, tengo la siguiente información:
+ * 
+ * Cuco,8,Pastor belga
+ * Rufo,2,Pekines
+ * Alba,5,Mastín
+ * 
+ * 
+ * En cada línea, aparece la información de un perro.
+ * Se pide, hacer un programa (Clase Main), que lea el fichero
+ * y creer a partir de él, un arrayList de perros
+ * 
+ * pista: usad el método split de la clase String para leer el contenido del Fichero
+ * 
+ * 
+ * --------------------
+ * 
+ * PROPUESTA DE EJERCICIO 2
+ * 
+ * Se quiere hacer un método para determinar
+ * la fortaleza de una contraseña. Se recibe
+ * un String que representa la contraseña y se
+ * devuelve un número que indica cómo de fuerte
+ * es la contraseña:
+ * 
+ * 0 ) Si es débil
+ * 1 ) Si es normal
+ * 2 ) Si es fuerte
+ * 
+ * Una contraseña se considera débil sin no tiene 
+ * ningún número
+ * Una contraseña se considera normal si tiene algún número
+ * Una contraseña se considera fuerte si tiene algún número, alguna mayúscula
+ * y algúna minúscula
+ * 
+ * Una vez hecho el método, haced una clase Main
+ * para que lo pruebe
+ * 
+ */
+
+
 public class MainArrayList {
 	
 	public MainArrayList() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public static int perroEnListaN 
+	(ArrayList<Perro> lista_perros, 
+			Perro perro_buscado)
+	{
+		int pos = -1;
+		boolean encontrado = false;
+		int indice = 0; //para recorrer
+		Perro perro_actual = null;
+		while ((!encontrado)&&(indice<lista_perros.size()))
+		{
+			perro_actual = lista_perros.get(indice);
+			if (perro_actual.equals(perro_buscado))
+			{
+				encontrado = true;
+				pos = indice;
+			} else 
+			{ //voy a la siguiente
+				indice++;
+			}
+		}
+		
+		return pos;
+		
+	
+		
 	}
 	
 	public static boolean perroEnLista 
@@ -79,15 +150,18 @@ public class MainArrayList {
 		lista_perros.add(perro_nacho);
 		lista_perros.add(perro_aran);
 		
-		Perro perro_buscado = new Perro("Galgo", 2, "Isi");
+		Perro perro_buscado = new Perro("Galgo", 3, "Isi");
 		boolean esta = perroEnLista(lista_perros, perro_buscado);
+		int posicion = perroEnListaN(lista_perros, perro_buscado);
 		if (esta)
 		{
 			System.out.println("El can están");
+			System.out.println("POS = " + posicion);
 		} 
 		else 
 		{
 			System.out.println("El can NO está");
+			System.out.println("POS = " + posicion);
 		}
 		
 //		ArrayList<String> lista = new ArrayList<String>();
