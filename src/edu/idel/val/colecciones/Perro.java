@@ -1,11 +1,45 @@
 package edu.idel.val.colecciones;
 
-public class Perro {
+import java.util.ArrayList;
+
+public class Perro implements Comparable<Perro>{
 	
 	private String raza;
 	private int edad;
 	private String nombre;
 		
+	
+	public static void mostrarListaPerros 
+	(ArrayList<Perro> alp)
+	{
+		for (Perro p : alp)
+		{
+			System.out.println
+			("Nombre  " + p.nombre + " Edad " 
+			+ p.edad);
+		}
+	}
+	/**
+	 * TODO comparar perro con this
+	 * si this es mayor que perro devuelo nº +
+	 * si this es menor que perro devuelvo nº -
+	 * si son iguales a 0
+	 */
+	@Override
+	public int compareTo(Perro perro) {
+		int mayor = 0;
+		
+		if (this.edad>perro.edad)
+		{
+			mayor = 1;
+		}
+		else if (this.edad < perro.edad)
+		{
+			mayor = -1;
+		}
+		return mayor;
+	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -48,6 +82,7 @@ public class Perro {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	
 	
 

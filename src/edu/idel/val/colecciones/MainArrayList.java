@@ -1,6 +1,7 @@
 package edu.idel.val.colecciones;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
  * 
@@ -141,7 +142,11 @@ public class MainArrayList {
 	
 	
 	public static void main(String[] args) {
-		
+		/**CASTING DE STRING A NÚMERO
+		String edad = new String("38");
+		int nedad = Integer.parseInt(edad);
+		**/
+//		
 		ArrayList<Perro> lista_perros = new ArrayList<Perro>();
 		Perro perro_aran = new Perro("Galgo", 3, "Isi");
 		Perro perro_aurora = new Perro("Pastor Alemán", 0, "Simba");
@@ -150,20 +155,26 @@ public class MainArrayList {
 		lista_perros.add(perro_nacho);
 		lista_perros.add(perro_aran);
 		
-		Perro perro_buscado = new Perro("Galgo", 3, "Isi");
-		boolean esta = perroEnLista(lista_perros, perro_buscado);
-		int posicion = perroEnListaN(lista_perros, perro_buscado);
-		if (esta)
-		{
-			System.out.println("El can están");
-			System.out.println("POS = " + posicion);
-		} 
-		else 
-		{
-			System.out.println("El can NO está");
-			System.out.println("POS = " + posicion);
-		}
-		
+		System.out.println("LPERROS desORDENADA");
+		Perro.mostrarListaPerros(lista_perros);
+		Collections.sort(lista_perros);
+		System.out.println("LPERROS ORDENADA");
+		Perro.mostrarListaPerros(lista_perros);
+//		
+//		Perro perro_buscado = new Perro("Galgo", 3, "Isi");
+//		boolean esta = perroEnLista(lista_perros, perro_buscado);
+//		int posicion = perroEnListaN(lista_perros, perro_buscado);
+//		if (esta)
+//		{
+//			System.out.println("El can están");
+//			System.out.println("POS = " + posicion);
+//		} 
+//		else 
+//		{
+//			System.out.println("El can NO está");
+//			System.out.println("POS = " + posicion);
+//		}
+//		
 //		ArrayList<String> lista = new ArrayList<String>();
 //		lista.add("Laura");
 //		lista.add("Andrés");
